@@ -1,0 +1,8 @@
+{
+  "name": "node-players-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/DevLuDaley/node-players-api.git",
+  "author": "devludaley <daleyluis@gmail.com>",
+  "license": "MIT"
+}
