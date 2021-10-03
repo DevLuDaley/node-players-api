@@ -1,0 +1,1 @@
+const playersApi = require('./index');
