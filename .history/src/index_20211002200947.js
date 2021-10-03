@@ -26,3 +26,5 @@ app.listen(port, () => {
   console.log(`App running on port ${port}.
 Go to localhost:3000`);
 });
+
+module.exports = playersApi;
