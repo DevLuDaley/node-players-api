@@ -36,12 +36,10 @@ const createPlayer = (request, response) => {
   pool.query('INSERT INTO players (firstName, lastName, playerId, age, jersey, photo) VALUES ($1, $2, $3, $4, $5, $6)', [firstName, lastName, playerId, age, jersey, photo], (error, results) => {
     if (error) {
       throw error;
-    } else if (!Array.isArray(results.rows) || results.rows.length < 1) {
-    	throw error;
     }
     // response.status(201).send(`Player added with ID: ${results.insertId}`);
 
-    response.status(201).send(`Player added with ID: ${results.rows[0].id}`);
+    response.status(201).send(`User added with ID: ${results.rows[0].id}`);
   });
 };
 

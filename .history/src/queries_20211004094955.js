@@ -41,7 +41,7 @@ const createPlayer = (request, response) => {
     }
     // response.status(201).send(`Player added with ID: ${results.insertId}`);
 
-    response.status(201).send(`Player added with ID: ${results.rows[0].id}`);
+    response.status(201).send(`User added with ID: ${results.rows[0].id}`);
   });
 };
 
