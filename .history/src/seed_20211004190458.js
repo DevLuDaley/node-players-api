@@ -1,6 +1,6 @@
-// const { Pool } = require('pg');
+const { Pool } = require('pg');
 const fetch = require('node-fetch');
-// const axios = require('axios').default;
+const axios = require('axios').default;
 
 // const db = require('./queries');
 // const Player = require('./models/player');
