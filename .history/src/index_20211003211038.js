@@ -13,7 +13,7 @@ app.use(
   }),
 );
 app.get('/', (request, response) => {
-  response.json({ info: 'NBA Players Stats Nodejs, Expressjs, and Postgres API' });
+  response.json({ info: 'NBA Stats Nodejs, Expressjs, and Postgres API' });
   // response.send('hello world!');
 });
 

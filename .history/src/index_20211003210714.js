@@ -13,11 +13,11 @@ app.use(
   }),
 );
 app.get('/', (request, response) => {
-  response.json({ info: 'NBA Players Stats Nodejs, Expressjs, and Postgres API' });
+  response.json({ info: 'NBA Stats Nodejs, Expressjs, and Postgres API' });
   // response.send('hello world!');
 });
 
-app.get('/api/v1/nba_players', db.getPlayers);
+app.get('/players', db.getPlayers);
 // app.get('/players/:id', db.getPlayerById);
 // app.post('/players', db.createPlayer);
 // app.put('/players/:id', db.updatePlayer);
