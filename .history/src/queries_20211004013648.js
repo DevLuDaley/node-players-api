@@ -29,11 +29,10 @@ const getPlayers = (request, response) => {
 // };
 
 const createPlayer = (request, response) => {
-  const {
-    firstName, lastName, playerId, age, jersey, photo,
-  } = request.body;
+  const { name, email } = request.body;
 
-  pool.query('INSERT INTO players (firstName, lastName, playerId, age, jersey, photo) VALUES ($1, $2, $3, $4, $5, $6)', [firstName, lastName, playerId, age, jersey, photo], (error, results) => {
+  pool.query('INSERT INTO players (firstName, lastName, playerId, age, jersey, photo)  
+  VALUES ($1, $2)', [name, email], (error, results) => {
     if (error) {
       throw error;
     }
