@@ -31,10 +31,10 @@ const getPlayers = (request, response) => {
 const createPlayer = async (req, res) => {
   try {
     const {
-      firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge, position, team,
+      firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge,
     } = req.body;
 
-    const newPlayer = await pool.query('INSERT INTO players (firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge, position, team], (error, results) => {
+    const newPlayer = await pool.query('INSERT INTO players (firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge], (error, results) => {
       if (error) {
         throw error;
       } else if (!Array.isArray(results.rows) || results.rows.length < 1) {

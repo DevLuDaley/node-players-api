@@ -28,13 +28,13 @@ const getPlayers = (request, response) => {
 //   });
 // };
 
-const createPlayer = async (req, res) => {
+const createPlayer = async (request, response) => {
   try {
     const {
-      firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge, position, team,
-    } = req.body;
+      firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge,
+    } = request.body;
 
-    const newPlayer = await pool.query('INSERT INTO players (firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge, position, team], (error, results) => {
+    const newPlayer = await pool.query('INSERT INTO players (firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge], (error, results) => {
       if (error) {
         throw error;
       } else if (!Array.isArray(results.rows) || results.rows.length < 1) {
@@ -42,7 +42,7 @@ const createPlayer = async (req, res) => {
       }
       // response.status(201).send(`Player added with ID: ${results.insertId}`);
 
-      res.status(201).send(`Player added with ID: ${results.rows[0].id}`);
+      response.status(201).send(`Player added with ID: ${results.rows[0].id}`);
     });
     res.json(newPlayer);
   } catch (err) {
