@@ -22,7 +22,7 @@ const nbaUrl = 'https://api.cbssports.com/fantasy/players/list?version=3.0&SPORT
 
 const postUrl = 'http://localhost:3000/api/v1/nba_players';
 
-const createNewPlayer = async (importedPlayer) => {
+const assignPlayerData = async (importedPlayer) => {
   //    const getApiData = async () => {
   const response = await fetch(postUrl,
     {
@@ -63,10 +63,7 @@ const getApiData = async () => {
         photo: allPlayers[i].photo,
         team: allPlayers[i].pro_team.toLowerCase(),
       };
-
-      //   ! DO DATA TRANSFORMATIONS HERE
-
-      createNewPlayer(player);
+      assignPlayerData(player);
     // );
     // db.createPlayer(player);
     // db.createPlayer();
