@@ -1,18 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { Pool } = require('pg');
 
 const app = express();
 const db = require('./queries');
 
 const port = 3000;
-const pool = new Pool({
-  user: 'nba_admin',
-  host: 'localhost',
-  database: 'sports_api',
-  password: 'password',
-  port: 5432,
-});
 
 app.use(bodyParser.json());
 app.use(
@@ -30,10 +22,10 @@ app.get('/api/v1/nba_players', db.getPlayers);
 app.post('/api/v1/nba_players', async (req, res) => {
   try {
     const {
-      firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge,
-    } = req.body;
+      firstName, lastName, playerId, age, jersey, photo,
+    } = request.body;
 
-    const newPlayer = await pool.query('INSERT INTO players (firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge], (error, results) => {
+    const newPlayer = await pool.query('INSERT INTO players (firstName, lastName, playerId, age, jersey, photo) VALUES ($1, $2, $3, $4, $5, $6)', [firstName, lastName, playerId, age, jersey, photo], (error, results) => {
       if (error) {
         throw error;
       }
@@ -41,7 +33,6 @@ app.post('/api/v1/nba_players', async (req, res) => {
       // 	throw error;
       // }
     });
-    res.json(newPlayer);
   } catch (err) {
     console.log(err.message);
   }
