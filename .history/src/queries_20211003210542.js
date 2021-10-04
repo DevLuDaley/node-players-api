@@ -41,7 +41,7 @@ const getPlayers = (request, response) => {
 
 module.exports = {
   getPlayers,
-  // getPlayerById,
+  getPlayerById,
   // createPlayer,
   // updatePlayer,
   // deletePlayer,

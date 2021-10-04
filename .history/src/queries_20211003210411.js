@@ -9,7 +9,7 @@ const pool = new Pool({
 });
 
 const getPlayers = (request, response) => {
-  pool.query('SELECT * FROM players ORDER BY id ASC', (error, results) => {
+  pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
     if (error) {
       throw error;
     }
@@ -20,7 +20,7 @@ const getPlayers = (request, response) => {
 // const getPlayerById = (request, response) => {
 //   const id = parseInt(request.params.id);
 
-//   pool.query('SELECT * FROM players WHERE id = $1', [id], (error, results) => {
+//   pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
 //     if (error) {
 //       throw error;
 //     }
@@ -31,7 +31,7 @@ const getPlayers = (request, response) => {
 // const createPlayer = (request, response) => {
 //   const { name, email } = request.body;
 
-//   pool.query('INSERT INTO players (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
+//   pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
 //     if (error) {
 //       throw error;
 //     }
@@ -41,7 +41,7 @@ const getPlayers = (request, response) => {
 
 module.exports = {
   getPlayers,
-  // getPlayerById,
+  getPlayerById,
   // createPlayer,
   // updatePlayer,
   // deletePlayer,
