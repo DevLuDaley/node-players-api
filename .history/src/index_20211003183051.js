@@ -14,7 +14,7 @@ app.use(
 );
 app.get('/', (request, response) => {
   response.json({ info: 'NBA Stats Nodejs, Expressjs, and Postgres API' });
-  // response.send('hello world!');
+  response.send('hello world!');
 });
 
 // app.get('/users', db.getUsers);
