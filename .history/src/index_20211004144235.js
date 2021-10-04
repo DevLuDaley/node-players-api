@@ -5,7 +5,7 @@ const { Pool } = require('pg');
 const app = express();
 const db = require('./queries');
 
-const port = 3000;
+const port = 5000;
 const pool = new Pool({
   user: 'nba_admin',
   host: 'localhost',
@@ -30,10 +30,10 @@ app.get('/api/v1/nba_players', db.getPlayers);
 app.post('/api/v1/nba_players', async (req, res) => {
   try {
     const {
-      firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge, position, team,
+      firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge,
     } = req.body;
 
-    const newPlayer = await pool.query('INSERT INTO players (firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge, position, team) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge, position, team], (error, results) => {
+    const newPlayer = await pool.query('INSERT INTO players (firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge], (error, results) => {
       if (error) {
         throw error;
       }
