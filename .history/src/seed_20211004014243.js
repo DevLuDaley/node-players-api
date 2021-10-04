@@ -33,7 +33,7 @@ const getApiData = async () => {
 
   for (let i = 0; i < allPlayers.length; i++) {
     // const player = new Player({
-    const player = //createPlayer(// )
+    const player = createPlayer(// )
 
       // new Player(
 
@@ -47,8 +47,7 @@ const getApiData = async () => {
         photo: allPlayers[i].photo,
         //   team: allPlayers[i].pro_team,
       },
-    // );
-    // createPlayer(player)
+    );
   }
 };
 getApiData();

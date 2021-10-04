@@ -12,7 +12,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-// let resultData;
+let resultData;
 const saveCounter = 0;
 
 // const nba_url = ['https://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=basketball&response_format=JSON
@@ -32,23 +32,16 @@ const getApiData = async () => {
   //   console.log(json.body.players[0].pro_team);
 
   for (let i = 0; i < allPlayers.length; i++) {
-    // const player = new Player({
-    const player = //createPlayer(// )
-
-      // new Player(
-
-      {
-        firstName: allPlayers[i].firstname,
-        lastName: allPlayers[i].lastname,
-        playerId: allPlayers[i].id,
-        age: allPlayers[i].age,
-        jersey: parseInt(allPlayers[i].jersey, 10),
-        //   position: allPlayers[i].position,
-        photo: allPlayers[i].photo,
-        //   team: allPlayers[i].pro_team,
-      },
-    // );
-    // createPlayer(player)
+    const player = new Player({
+      firstName: allPlayers[i].firstname,
+      lastName: allPlayers[i].lastname,
+      playerId: allPlayers[i].id,
+      age: allPlayers[i].age,
+      jersey: parseInt(allPlayers[i].jersey, 10),
+      //   position: allPlayers[i].position,
+      photo: allPlayers[i].photo,
+    //   team: allPlayers[i].pro_team,
+    });
   }
 };
 getApiData();

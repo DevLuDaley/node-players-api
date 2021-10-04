@@ -2,7 +2,6 @@ const { Pool } = require('pg');
 const fetch = require('node-fetch');
 
 const Player = require('./models/player');
-const createPlayer = require('./index');
 
 const pool = new Pool({
   user: 'nba_admin',
@@ -12,7 +11,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-// let resultData;
+let resultData;
 const saveCounter = 0;
 
 // const nba_url = ['https://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=basketball&response_format=JSON
@@ -21,35 +20,25 @@ const nbaUrl = 'https://api.cbssports.com/fantasy/players/list?version=3.0&SPORT
 const getApiData = async () => {
   const response = await fetch(nbaUrl);
   const json = await response.json();
+  //   resultData = [...json];
+  // nbaUrl.map(async (url) => {
+  // try {
+  // const response = await fetch(nbaUrl);
+  // const json = await response.json();
+  //   console.log(json);
+  // ! GET ALL PLAYERS =>>> console.log(json.body.players);
   const allPlayers = json.body.players;
-  //   console.log(json.body.players[0]); // ! first player in list
-  //   console.log(json.body.players[0].age);
-  //   console.log(json.body.players[0].firstname);
-  //   console.log(json.body.players[0].lastname);
-  //   console.log(json.body.players[0].position);
-  //   console.log(json.body.players[0].id);
-  //   console.log(json.body.players[0].photo);
-  //   console.log(json.body.players[0].pro_team);
-
-  for (let i = 0; i < allPlayers.length; i++) {
-    // const player = new Player({
-    const player = //createPlayer(// )
-
-      // new Player(
-
-      {
-        firstName: allPlayers[i].firstname,
-        lastName: allPlayers[i].lastname,
-        playerId: allPlayers[i].id,
-        age: allPlayers[i].age,
-        jersey: parseInt(allPlayers[i].jersey, 10),
-        //   position: allPlayers[i].position,
-        photo: allPlayers[i].photo,
-        //   team: allPlayers[i].pro_team,
-      },
-    // );
-    // createPlayer(player)
-  }
+  console.log(json.body.players[0]); // !first player in list
+  // const json = response.json();
+  //   const json = resultData.json();
+  // resultData = [...json];
+  // for (let i = 0; i < resultData.length; i++) {
+  //   const player = new Player({
+  //     firstName: resultData[i].name,
+  //     lastName: resultData[i].name,
+  //     playerId: resultData[i].status,
+  //     age: resultData[i].age,
+  //   });
 };
 getApiData();
 

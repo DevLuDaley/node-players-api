@@ -46,9 +46,9 @@ const getApiData = async () => {
         //   position: allPlayers[i].position,
         photo: allPlayers[i].photo,
         //   team: allPlayers[i].pro_team,
+        player  = createPlayer(player)
       },
     // );
-    // createPlayer(player)
   }
 };
 getApiData();
