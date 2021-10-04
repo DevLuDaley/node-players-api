@@ -4,11 +4,9 @@ function Player(firstName, lastName, playerId, age, jersey, photo, avgPosAge, av
   this.firstName = firstName || null;
   this.lastName = lastName || null;
   this.age = age || null;
-  this.playerId = playerId || null;
-  this.jersey = jersey;
-  this.photo = photo;
-//   this.avgPosAge = avgPosAge,
-//   this.avgLeagueAge = avgLeagueAge;// ,
+  this.playerId = id || null;
+this.jersey = jersey
+this.photo = photo this.avgPosAge = 0, avgLeagueAge,
 }
 
 Player.prototype.getAge = function () {

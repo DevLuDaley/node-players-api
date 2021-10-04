@@ -1,14 +1,9 @@
 const { pg } = require('pg');
 
-function Player(firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge) { // Accept firstName and age in the constructor
+function Player(age, firstName) { // Accept firstName and age in the constructor
   this.firstName = firstName || null;
   this.lastName = lastName || null;
   this.age = age || null;
-  this.playerId = playerId || null;
-  this.jersey = jersey;
-  this.photo = photo;
-//   this.avgPosAge = avgPosAge,
-//   this.avgLeagueAge = avgLeagueAge;// ,
 }
 
 Player.prototype.getAge = function () {
