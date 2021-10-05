@@ -150,7 +150,7 @@ const getApiData = async () => {
 
     // console.log(isKeyPresent);
 
-    // ! accept the player position... check the playerAvgs array and confirm the position ---then return the avgAge
+    // ! accept the player position... check the aplayerAvgs array and confirm the pposition ---then return theavg age
     let calcAvgAge = 0;
     const assignAvgPosValues = (playerPosition) => {
       playerAvgs.forEach((avg) => {

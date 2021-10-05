@@ -73,7 +73,6 @@ const transformApiData = async (apiResponse) => {
       // console.log(average(groupedPlayers.G) ^ 0);
     }
     console.log(positionAges);
-    return positionAges;
 
     // console.log(average(groupedPlayers.PG) ^ 0);
     // console.log(Array.isArray(groupedPlayers));
@@ -113,8 +112,6 @@ const transformApiData = async (apiResponse) => {
     console.error(error);
   }
 };
-
-// console.log(positionAges);
 const getApiData = async () => {
   try {
     const response = await fetch(nbaUrl);
@@ -122,49 +119,14 @@ const getApiData = async () => {
     const json = await response.json();
     const allPlayers = json.body.players;
     //   console.log(json.body.players[0]); // ! first player in list
-    const playerAvgs = await transformApiData(allPlayers);
-    console.log(playerAvgs);
+    const playerAvgs = transformApiData(allPlayers);
+    // console.log(playerAvgs);
     // console.log(playerAvgs);
     // console.log(allPlayers.length);
 
     // for (let i = 0; i < allPlayers.length; i += 1) {
-    playerAvgs;
-    console.log(playerAvgs.includes('C'));
-    playerAvgs.forEach((avg) => {
-      avg;
-      if (Object.keys(avg) == 'SG') {
-        // console.log(avg);
-        avg;
-      }
-    });
-
-    console.log(Object.values(playerAvgs));
-    console.log(Object.values(playerAvgs).includes('C'));
-    console.log(Object.keys(playerAvgs).includes('C'));
-    // console.log(Object.keys(playerAvgs) == 'SG');
-    // console.log(Object.keys(playerAvgs.includes('SG')));
-
-    // const checkKeyPresenceInArray = (key) => playerAvgs.some((obj) => Object.keys(obj).includes(key));
-
-    // const isKeyPresent = checkKeyPresenceInArray('C');
-
-    // console.log(isKeyPresent);
-
-    // ! accept the player position... check the playerAvgs array and confirm the position ---then return the avgAge
-    let calcAvgAge = 0;
-    const assignAvgPosValues = (playerPosition) => {
-      playerAvgs.forEach((avg) => {
-        if (playerPosition == Object.keys(avg)) {
-          const avgAge = parseInt(Object.values(avg), 10);
-          calcAvgAge = avgAge;
-          return avgAge;
-        }
-      });
-      return calcAvgAge;
-    };
-
     // ? map incoming returned object of players to pgsql player object properties
-    for (let i = 0; i < 100; i += 1) {
+    for (let i = 0; i < 10; i += 1) {
       const player = {
         firstName: allPlayers[i].firstname.toLowerCase(),
         lastName: allPlayers[i].lastname.toLowerCase(),
@@ -174,7 +136,6 @@ const getApiData = async () => {
         photo: allPlayers[i].photo,
         position: allPlayers[i].position.toLowerCase(),
         team: allPlayers[i].pro_team.toLowerCase(),
-        avgPosAge: allPlayers[i].age && allPlayers[i].position ? assignAvgPosValues(allPlayers[i].position) : null,
       };
       //   ! DO DATA TRANSFORMATIONS HERE
       createNewPlayer(player);

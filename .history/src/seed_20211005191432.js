@@ -150,21 +150,41 @@ const getApiData = async () => {
 
     // console.log(isKeyPresent);
 
-    // ! accept the player position... check the playerAvgs array and confirm the position ---then return the avgAge
-    let calcAvgAge = 0;
+    // ! accept the player position... check the aplayerAvgs array and confirm the pposition ---then return theavg age
+    const ageBox = [];
+    console.log(playerAvgs);
     const assignAvgPosValues = (playerPosition) => {
+      // const checkKeyPresenceInArray = (key) => playerAvgs.some((obj) => Object.keys(obj).includes(key));
       playerAvgs.forEach((avg) => {
+        // console.log(avg);
+        // if (playerPosition == avg) {
+        // if (Object.keys(avg) == playerPosition) {
         if (playerPosition == Object.keys(avg)) {
+          console.log(playerPosition);
+          console.log(avg);
           const avgAge = parseInt(Object.values(avg), 10);
-          calcAvgAge = avgAge;
+          console.log(avgAge);
+          // return avgAge;
+          // return ageBox.avgAge;
           return avgAge;
         }
+        // return avgAge;
       });
-      return calcAvgAge;
+      // console.log(ageBox);
+      // return ageBox;
+      // if checkKeyPresenceInArray(playerPosition) {
+      //   playerAvgs.playerPosition : 99;
+      //   // return checkKeyPresenceInArray(playerPosition) ? playerAvgs.playerPosition : 99;
+      //   return playerAvgs.playerPosition
+      // }
+      // else 99;
     };
+    // const ageCount = (params) => 943;
 
+    // console.log(assignAvgPosValues('G'));
+    // console.log(assignAvgPosValues('PG'));
     // ? map incoming returned object of players to pgsql player object properties
-    for (let i = 0; i < 100; i += 1) {
+    for (let i = 0; i < 10; i += 1) {
       const player = {
         firstName: allPlayers[i].firstname.toLowerCase(),
         lastName: allPlayers[i].lastname.toLowerCase(),
@@ -174,7 +194,14 @@ const getApiData = async () => {
         photo: allPlayers[i].photo,
         position: allPlayers[i].position.toLowerCase(),
         team: allPlayers[i].pro_team.toLowerCase(),
-        avgPosAge: allPlayers[i].age && allPlayers[i].position ? assignAvgPosValues(allPlayers[i].position) : null,
+        // avgPosAge: Object.keys(playerAvgs).select((pos) => allPlayers[i].position == pos),
+        // avgPosAge: checkKeyPresenceInArray(allPlayers[i].position) ? playerAvgs[allPlayers[i].position] : 10000,
+        // avgPosAge: assignAvgPosValues(allPlayers[i].position) ? 85 : 10000,
+        avgPosAge: assignAvgPosValues(allPlayers[i].position),
+        // avgPosAge: ageCount(allPlayers[i].position),
+        // avgPosAge: playerAvgs.forEach((avg) => {
+        // Object.keys(avg) == allPlayers[i].position ? avg : 100;
+        // }),
       };
       //   ! DO DATA TRANSFORMATIONS HERE
       createNewPlayer(player);

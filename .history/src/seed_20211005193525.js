@@ -150,16 +150,29 @@ const getApiData = async () => {
 
     // console.log(isKeyPresent);
 
-    // ! accept the player position... check the playerAvgs array and confirm the position ---then return the avgAge
+    // ! accept the player position... check the aplayerAvgs array and confirm the pposition ---then return theavg age
+    const ageBox = [];
+    console.log(playerAvgs);
+    const j = playerAvgs.flat();
+    console.log(j);
     let calcAvgAge = 0;
     const assignAvgPosValues = (playerPosition) => {
+      // const checkKeyPresenceInArray = (key) => playerAvgs.some((obj) => Object.keys(obj).includes(key));
       playerAvgs.forEach((avg) => {
+        // console.log(avg);
+        // if (playerPosition == avg) {
+        // if (Object.keys(avg) == playerPosition) {
         if (playerPosition == Object.keys(avg)) {
+          // console.log(playerPosition);
+          // console.log(avg);
           const avgAge = parseInt(Object.values(avg), 10);
+          // console.log(avgAge);
           calcAvgAge = avgAge;
           return avgAge;
         }
       });
+      // console.log(calcAvgAge);
+
       return calcAvgAge;
     };
 
