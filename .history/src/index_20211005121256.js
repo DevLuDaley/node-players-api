@@ -40,7 +40,7 @@ app.post('/api/v1/nba_players', async (req, res) => {
       },
     );
     // results.json(newPlayer);
-    res.json(newPlayer);
+    res.attua(200).json(newPlayer);
   } catch (err) {
     console.log(err.message);
   }

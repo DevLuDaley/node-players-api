@@ -37,10 +37,10 @@ app.post('/api/v1/nba_players', async (req, res) => {
       'INSERT INTO players (firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge, position, team) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
       [firstName, lastName, playerId, age, jersey, photo, avgPosAge, avgLeagueAge, position, team],
       (error, results) => {
+        res.json(newPlayer);
       },
     );
     // results.json(newPlayer);
-    res.json(newPlayer);
   } catch (err) {
     console.log(err.message);
   }
