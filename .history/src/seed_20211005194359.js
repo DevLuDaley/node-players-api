@@ -28,7 +28,15 @@ const average = (ages) => {
 
 const transformApiData = async (apiResponse) => {
   try {
+    // await apiResponse;
+    // for (p in apiResponse
+
     const playersWithAges = apiResponse.filter((player) => player.age != null);// && player.position != null);
+    console.log(apiResponse.length);
+    console.log(playersWithAges.length);
+    console.log(playersWithAges[0].position);
+    console.log(playersWithAges[0].age);
+
     function groupBy(objectArray, property) {
       return objectArray.reduce((acc, obj) => {
         const add = 0;
@@ -37,6 +45,8 @@ const transformApiData = async (apiResponse) => {
           acc[key] = [];
         }
         acc[key].push(obj.age);
+
+        // console.log('yo ', average(acc[key]));
         return acc;
       },
       {});
@@ -45,6 +55,7 @@ const transformApiData = async (apiResponse) => {
     const groupedPlayers = groupBy(playersWithAges, 'position');
     for (const [key, value] of Object.entries(groupedPlayers)) {
       const avgValue = average(groupedPlayers[key]);
+      console.log(avgValue);
       groupedPlayers[value] = [avgValue];
       // ! flatten ages arrays into avg age
 
@@ -60,13 +71,14 @@ const transformApiData = async (apiResponse) => {
 const getApiData = async () => {
   try {
     const response = await fetch(nbaUrl);
+    // const response = axios.get(nbaUrl);
     const json = await response.json();
     const allPlayers = json.body.players;
+    //   console.log(json.body.players[0]); // ! first player in list
     const playerAvgs = await transformApiData(allPlayers);
 
     // ! accept the player position... check the playerAvgs array and confirm the position ---then return the avgAge
     let calcAvgAge = 0;
-
     const assignAvgPosValues = (playerPosition) => {
       playerAvgs.forEach((avg) => {
         if (playerPosition == Object.keys(avg)) {
@@ -79,8 +91,7 @@ const getApiData = async () => {
     };
 
     // ? map incoming returned object of players to pgsql player object properties
-    // for (let i = 0; i < 100; i += 1) {
-    for (let i = 0; i < allPlayers.length; i += 1) {
+    for (let i = 0; i < 100; i += 1) {
       const player = {
         firstName: allPlayers[i].firstname.toLowerCase(),
         lastName: allPlayers[i].lastname.toLowerCase(),

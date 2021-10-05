@@ -79,8 +79,7 @@ const getApiData = async () => {
     };
 
     // ? map incoming returned object of players to pgsql player object properties
-    // for (let i = 0; i < 100; i += 1) {
-    for (let i = 0; i < allPlayers.length; i += 1) {
+    for (let i = 0; i < 100; i += 1) {
       const player = {
         firstName: allPlayers[i].firstname.toLowerCase(),
         lastName: allPlayers[i].lastname.toLowerCase(),
