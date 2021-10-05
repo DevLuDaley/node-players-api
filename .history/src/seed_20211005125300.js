@@ -55,12 +55,12 @@ const transformApiData = async (apiResponse) => {
 
     const groupedPlayers = groupBy(playersWithAges, 'position');
     console.log(groupedPlayers);
-    console.log(average(groupedPlayers.G) ^ 0);
-    console.log(average(groupedPlayers.PG) ^ 0);
-    console.log(average(groupedPlayers.SF) ^ 0);
-    console.log(average(groupedPlayers.SG) ^ 0);
-    console.log(average(groupedPlayers.C) ^ 0);
-    console.log(average(groupedPlayers.F) ^ 0);
+    console.log(average(groupedPlayers.G));
+    console.log(average(groupedPlayers.PG));
+    console.log(average(groupedPlayers.SF));
+    console.log(average(groupedPlayers.SG));
+    console.log(average(groupedPlayers.C.round()));
+    console.log(average(groupedPlayers.F));
     // const cantShoot = groupedPlayers.map((position) => position);
     // const cantShoot = groupedPlayers.filter((position) => position !== 'SF');
   } catch (error) {
@@ -74,8 +74,7 @@ const getApiData = async () => {
     const json = await response.json();
     const allPlayers = json.body.players;
     //   console.log(json.body.players[0]); // ! first player in list
-    const playerAvgs = transformApiData(allPlayers);
-    console.log(playerAvgs);
+    transformApiData(allPlayers);
     // console.log(allPlayers.length);
 
     // for (let i = 0; i < allPlayers.length; i += 1) {

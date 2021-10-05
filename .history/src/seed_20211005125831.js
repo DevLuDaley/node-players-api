@@ -74,8 +74,7 @@ const getApiData = async () => {
     const json = await response.json();
     const allPlayers = json.body.players;
     //   console.log(json.body.players[0]); // ! first player in list
-    const playerAvgs = transformApiData(allPlayers);
-    console.log(playerAvgs);
+    transformApiData(allPlayers);
     // console.log(allPlayers.length);
 
     // for (let i = 0; i < allPlayers.length; i += 1) {

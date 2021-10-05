@@ -7,22 +7,33 @@ const nbaUrl = 'https://api.cbssports.com/fantasy/players/list?version=3.0&SPORT
 const postUrl = 'http://localhost:3000/api/v1/nba_players';
 
 const createNewPlayer = async (importedPlayer) => {
-  const response = await fetch(postUrl,
+  //    const getApiData = async () => {
+//   const response = await fetch(postUrl,
+//     {
+//       method: 'POST',
+//       body: JSON.stringify(importedPlayer),
+//       headers: { 'Content-Type': 'application/json' },
+//     }).then((res) => res.json())
+//     .then((json) => console.log(json));
+// };
+  const response = await axios.post(postUrl,
     {
       method: 'POST',
       body: JSON.stringify(importedPlayer),
       headers: { 'Content-Type': 'application/json' },
-    });
+    }).then((res) => res.json())
+    .then((json) => console.log(json));
 };
 
-const average = (ages) => {
+const average = (nums) => {
   let sum = 0;
   let avg = 0;
 
-  for (const num of ages) {
+  for (const num of nums) {
     sum += num;
-    avg = sum / ages.length;
+    avg = sum / nums.length;
   }
+
   return avg;
 };
 
@@ -55,13 +66,13 @@ const transformApiData = async (apiResponse) => {
 
     const groupedPlayers = groupBy(playersWithAges, 'position');
     console.log(groupedPlayers);
-    console.log(average(groupedPlayers.G) ^ 0);
-    console.log(average(groupedPlayers.PG) ^ 0);
-    console.log(average(groupedPlayers.SF) ^ 0);
-    console.log(average(groupedPlayers.SG) ^ 0);
-    console.log(average(groupedPlayers.C) ^ 0);
-    console.log(average(groupedPlayers.F) ^ 0);
-    // const cantShoot = groupedPlayers.map((position) => position);
+    console.log(average(groupedPlayers.G));
+    console.log(average(groupedPlayers.PG));
+    console.log(average(groupedPlayers.SF));
+    console.log(average(groupedPlayers.SG));
+    console.log(average(groupedPlayers.C));
+    console.log(average(groupedPlayers.F));
+    const cantShoot = groupedPlayers.map((position) => position);
     // const cantShoot = groupedPlayers.filter((position) => position !== 'SF');
   } catch (error) {
     console.error(error);
@@ -74,9 +85,7 @@ const getApiData = async () => {
     const json = await response.json();
     const allPlayers = json.body.players;
     //   console.log(json.body.players[0]); // ! first player in list
-    const playerAvgs = transformApiData(allPlayers);
-    console.log(playerAvgs);
-    // console.log(allPlayers.length);
+    // h transformApiData(allPlayers);
 
     // for (let i = 0; i < allPlayers.length; i += 1) {
     // ? map incoming returned object of players to pgsql player object properties
@@ -87,8 +96,8 @@ const getApiData = async () => {
         playerId: allPlayers[i].id,
         age: allPlayers[i].age,
         jersey: parseInt(allPlayers[i].jersey, 10),
-        photo: allPlayers[i].photo,
         position: allPlayers[i].position.toLowerCase(),
+        photo: allPlayers[i].photo,
         team: allPlayers[i].pro_team.toLowerCase(),
       };
       //   ! DO DATA TRANSFORMATIONS HERE
