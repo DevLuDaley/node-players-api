@@ -126,7 +126,7 @@ const getApiData = async () => {
       // );
       // db.createPlayer(player);
       // db.createPlayer();
-      i += 1;
+      // i += 1;
     }
   } catch (error) {
     console.error(error);

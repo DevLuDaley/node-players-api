@@ -100,7 +100,7 @@ const getApiData = async () => {
     //   console.log(json.body.players[0].id);
     //   console.log(json.body.players[0].photo);
     // console.log(json.body.players[0].pro_team);
-    // transformApiData(allPlayers);
+    transformApiData(allPlayers);
 
     // for (let i = 0; i < allPlayers.length; i += 1) {
     // ? map incoming returned object of players to pgsql player object properties
@@ -126,7 +126,7 @@ const getApiData = async () => {
       // );
       // db.createPlayer(player);
       // db.createPlayer();
-      i += 1;
+      // i += 1;
     }
   } catch (error) {
     console.error(error);

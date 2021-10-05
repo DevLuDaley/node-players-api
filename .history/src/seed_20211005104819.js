@@ -55,6 +55,16 @@ const transformApiData = async (apiResponse) => {
     console.log(playersWithAges.length);
     console.log(playersWithAges[0].position);
     console.log(playersWithAges[0].age);
+    // console.log(playersWithAges[0].position);
+    // return await apiResponse.filter((player) => player.age != null);
+    // const ageBox = [];
+    // for (let i = 0; i < playersWithAges.length; i += 1) {
+    //   console.log(playersWithAges.length);
+    //   ageBox.push(playersWithAges[i].age);
+    //   console.log(ageBox);
+    //   console.log(average(ageBox));
+    //   return average(ageBox);
+    // }
 
     function groupBy(objectArray, property) {
       return objectArray.reduce((acc, obj) => {
@@ -100,7 +110,7 @@ const getApiData = async () => {
     //   console.log(json.body.players[0].id);
     //   console.log(json.body.players[0].photo);
     // console.log(json.body.players[0].pro_team);
-    // transformApiData(allPlayers);
+    transformApiData(allPlayers);
 
     // for (let i = 0; i < allPlayers.length; i += 1) {
     // ? map incoming returned object of players to pgsql player object properties
@@ -126,7 +136,7 @@ const getApiData = async () => {
       // );
       // db.createPlayer(player);
       // db.createPlayer();
-      i += 1;
+      // i += 1;
     }
   } catch (error) {
     console.error(error);
