@@ -54,44 +54,15 @@ const transformApiData = async (apiResponse) => {
     console.log(apiResponse.length);
     console.log(playersWithAges.length);
     console.log(playersWithAges[0].position);
-    console.log(playersWithAges[0].age);
     // console.log(playersWithAges[0].position);
     // return await apiResponse.filter((player) => player.age != null);
-    // const ageBox = [];
-    // for (let i = 0; i < playersWithAges.length; i += 1) {
-    //   console.log(playersWithAges.length);
-    //   ageBox.push(playersWithAges[i].age);
-    //   console.log(ageBox);
-    //   console.log(average(ageBox));
-    //   return average(ageBox);
-    // }
-
-    function groupBy(objectArray, property) {
-      return objectArray.reduce((acc, obj) => {
-        const add = 0;
-        const key = obj[property];
-        if (!acc[key]) {
-          acc[key] = [];
-        }
-        acc[key].push(obj.age);
-
-        // console.log('yo ', average(acc[key]));
-        return acc;
-      },
-      {});
+    const ageBox = [];
+    for (i = 0; i < playersWithAges.length; i += 1) {
+      ageBox.push(player.age);
+      console.log(ageBox);
+      console.log(average(ageBox));
+      return average(ageBox);
     }
-    // console.log(acc[0])
-
-    const groupedPlayers = groupBy(playersWithAges, 'position');
-    console.log(groupedPlayers);
-    console.log(average(groupedPlayers.G));
-    console.log(average(groupedPlayers.PG));
-    console.log(average(groupedPlayers.SF));
-    console.log(average(groupedPlayers.SG));
-    console.log(average(groupedPlayers.C));
-    console.log(average(groupedPlayers.F));
-    const cantShoot = groupedPlayers.map((position) => position);
-    // const cantShoot = groupedPlayers.filter((position) => position !== 'SF');
   } catch (error) {
     console.error(error);
   }

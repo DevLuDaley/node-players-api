@@ -75,7 +75,7 @@ const transformApiData = async (apiResponse) => {
         }
         acc[key].push(obj.age);
 
-        // console.log('yo ', average(acc[key]));
+        console.log('yo ', average(acc[key]));
         return acc;
       },
       {});
@@ -84,14 +84,6 @@ const transformApiData = async (apiResponse) => {
 
     const groupedPlayers = groupBy(playersWithAges, 'position');
     console.log(groupedPlayers);
-    console.log(average(groupedPlayers.G));
-    console.log(average(groupedPlayers.PG));
-    console.log(average(groupedPlayers.SF));
-    console.log(average(groupedPlayers.SG));
-    console.log(average(groupedPlayers.C));
-    console.log(average(groupedPlayers.F));
-    const cantShoot = groupedPlayers.map((position) => position);
-    // const cantShoot = groupedPlayers.filter((position) => position !== 'SF');
   } catch (error) {
     console.error(error);
   }

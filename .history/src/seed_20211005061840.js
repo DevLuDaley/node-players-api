@@ -33,65 +33,12 @@ const createNewPlayer = async (importedPlayer) => {
     .then((json) => console.log(json));
 };
 
-const average = (nums) => {
-  let sum = 0;
-  let avg = 0;
-
-  for (const num of nums) {
-    sum += num;
-    avg = sum / nums.length;
-  }
-
-  return avg;
-};
-
 const transformApiData = async (apiResponse) => {
   try {
     // await apiResponse;
     // for (p in apiResponse
-
-    const playersWithAges = apiResponse.filter((player) => player.age != null);// && player.position != null);
-    console.log(apiResponse.length);
-    console.log(playersWithAges.length);
-    console.log(playersWithAges[0].position);
-    console.log(playersWithAges[0].age);
-    // console.log(playersWithAges[0].position);
+    console.log('apiResponse.length', apiResponse.length);
     // return await apiResponse.filter((player) => player.age != null);
-    // const ageBox = [];
-    // for (let i = 0; i < playersWithAges.length; i += 1) {
-    //   console.log(playersWithAges.length);
-    //   ageBox.push(playersWithAges[i].age);
-    //   console.log(ageBox);
-    //   console.log(average(ageBox));
-    //   return average(ageBox);
-    // }
-
-    function groupBy(objectArray, property) {
-      return objectArray.reduce((acc, obj) => {
-        const add = 0;
-        const key = obj[property];
-        if (!acc[key]) {
-          acc[key] = [];
-        }
-        acc[key].push(obj.age);
-
-        // console.log('yo ', average(acc[key]));
-        return acc;
-      },
-      {});
-    }
-    // console.log(acc[0])
-
-    const groupedPlayers = groupBy(playersWithAges, 'position');
-    console.log(groupedPlayers);
-    console.log(average(groupedPlayers.G));
-    console.log(average(groupedPlayers.PG));
-    console.log(average(groupedPlayers.SF));
-    console.log(average(groupedPlayers.SG));
-    console.log(average(groupedPlayers.C));
-    console.log(average(groupedPlayers.F));
-    const cantShoot = groupedPlayers.map((position) => position);
-    // const cantShoot = groupedPlayers.filter((position) => position !== 'SF');
   } catch (error) {
     console.error(error);
   }
@@ -110,7 +57,6 @@ const getApiData = async () => {
     //   console.log(json.body.players[0].id);
     //   console.log(json.body.players[0].photo);
     // console.log(json.body.players[0].pro_team);
-    transformApiData(allPlayers);
 
     // for (let i = 0; i < allPlayers.length; i += 1) {
     // ? map incoming returned object of players to pgsql player object properties
@@ -131,8 +77,8 @@ const getApiData = async () => {
 
       //   ! DO DATA TRANSFORMATIONS HERE
 
-      // return createNewPlayer(player);
-      createNewPlayer(player);
+      return createNewPlayer(player);
+      // createNewPlayer(player);
       // );
       // db.createPlayer(player);
       // db.createPlayer();
@@ -142,24 +88,27 @@ const getApiData = async () => {
     console.error(error);
   }
 };
-const apiData = getApiData();
 
-// const callApi = () => {
-// console.log('HELLO');
-// // const apiData = getApiData();
-// getApiData().then((result) => {
-//   console.log('WHYYYYYYYYY????'); // "Some User token"
-//   console.log('result =>', result); // "Some User token"
-// });
-// console.log('HELLO AGAIN');
-// console.log(apiData.result);
-// console.log(Promise.all);
-// console.log('Promise.all');
-// };
+const callApi = async () => {
+  console.log('HELLO');
+  const apiData = await getApiData();
+  apiData.then((result) => {
+    console.log(result); // "Some User token"
+  });
+  // console.log(apiData.result);
+  // console.log(Promise.all);
+  // console.log('Promise.all');
+};
 
+// transformApiData(callApi());
+// const filter =
+// const playersWithAges = (listOfPlayers) => listOfPlayers.filter((player) => player.age != null);
+// console.log('playersWithAges => ', playersWithAges[0]);
+
+// playersWithAges(apiData);
 // console.log(apiData);
 // console.log();
-// callApi();
+callApi();
 // console.log(transformApiData(callApi()));
 // console.log('apiData type => ', typeof (apiData)); // object
 // console.log('apiData type => ', Array.isArray(apiData)); // false

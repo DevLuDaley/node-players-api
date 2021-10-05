@@ -33,17 +33,17 @@ const createNewPlayer = async (importedPlayer) => {
     .then((json) => console.log(json));
 };
 
-const average = (nums) => {
-  let sum = 0;
-  let avg = 0;
+const average = (...nums) {
+    let sum = 0;
+    let avg = 0;
 
-  for (const num of nums) {
+    for(const num of nums) {
     sum += num;
-    avg = sum / nums.length;
-  }
+    avg = sum/nums.length;
+    }
 
-  return avg;
-};
+    return avg;
+}
 
 const transformApiData = async (apiResponse) => {
   try {
@@ -54,44 +54,15 @@ const transformApiData = async (apiResponse) => {
     console.log(apiResponse.length);
     console.log(playersWithAges.length);
     console.log(playersWithAges[0].position);
-    console.log(playersWithAges[0].age);
     // console.log(playersWithAges[0].position);
     // return await apiResponse.filter((player) => player.age != null);
-    // const ageBox = [];
-    // for (let i = 0; i < playersWithAges.length; i += 1) {
-    //   console.log(playersWithAges.length);
-    //   ageBox.push(playersWithAges[i].age);
-    //   console.log(ageBox);
-    //   console.log(average(ageBox));
-    //   return average(ageBox);
-    // }
-
-    function groupBy(objectArray, property) {
-      return objectArray.reduce((acc, obj) => {
-        const add = 0;
-        const key = obj[property];
-        if (!acc[key]) {
-          acc[key] = [];
-        }
-        acc[key].push(obj.age);
-
-        // console.log('yo ', average(acc[key]));
-        return acc;
-      },
-      {});
-    }
-    // console.log(acc[0])
-
-    const groupedPlayers = groupBy(playersWithAges, 'position');
-    console.log(groupedPlayers);
-    console.log(average(groupedPlayers.G));
-    console.log(average(groupedPlayers.PG));
-    console.log(average(groupedPlayers.SF));
-    console.log(average(groupedPlayers.SG));
-    console.log(average(groupedPlayers.C));
-    console.log(average(groupedPlayers.F));
-    const cantShoot = groupedPlayers.map((position) => position);
-    // const cantShoot = groupedPlayers.filter((position) => position !== 'SF');
+    const ageBox = []
+for (player of playersWithAges){
+  ageBox.push(player.age)
+  return average(ageBox)
+  
+}
+    
   } catch (error) {
     console.error(error);
   }
