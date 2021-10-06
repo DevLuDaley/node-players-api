@@ -1,6 +1,6 @@
 // const { Pool } = require('pg');
 const fetch = require('node-fetch');
-// const axios = require('axios').default;
+const axios = require('axios').default;
 
 const nbaUrl = 'https://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=basketball&response_format=JSON';
 
